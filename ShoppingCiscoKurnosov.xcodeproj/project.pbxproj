@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE156FA327EB79D7008CA888 /* CategoriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE156FA127EB79D7008CA888 /* CategoriesViewController.xib */; };
+		FE156FA427EB79D7008CA888 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE156FA227EB79D7008CA888 /* CategoriesViewController.swift */; };
+		FE156FA627EB7A65008CA888 /* CategoriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE156FA527EB7A65008CA888 /* CategoriesPresenter.swift */; };
+		FE156FAA27EB8286008CA888 /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE156FA827EB8286008CA888 /* ItemCollectionViewCell.swift */; };
+		FE156FAB27EB8286008CA888 /* ItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE156FA927EB8286008CA888 /* ItemCollectionViewCell.xib */; };
+		FE5E9E4127EB575A00C78200 /* CategoriesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5E9E4027EB575A00C78200 /* CategoriesService.swift */; };
 		FE97BE2D27EB5391006B7FD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE97BE2C27EB5391006B7FD3 /* AppDelegate.swift */; };
 		FE97BE2F27EB5391006B7FD3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE97BE2E27EB5391006B7FD3 /* SceneDelegate.swift */; };
-		FE97BE3127EB5391006B7FD3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE97BE3027EB5391006B7FD3 /* ViewController.swift */; };
-		FE97BE3427EB5391006B7FD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE97BE3227EB5391006B7FD3 /* Main.storyboard */; };
 		FE97BE3727EB5391006B7FD3 /* ShoppingCiscoKurnosov.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FE97BE3527EB5391006B7FD3 /* ShoppingCiscoKurnosov.xcdatamodeld */; };
 		FE97BE3927EB5393006B7FD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE97BE3827EB5393006B7FD3 /* Assets.xcassets */; };
 		FE97BE3C27EB5393006B7FD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE97BE3A27EB5393006B7FD3 /* LaunchScreen.storyboard */; };
@@ -37,11 +41,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FE156FA127EB79D7008CA888 /* CategoriesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoriesViewController.xib; sourceTree = "<group>"; };
+		FE156FA227EB79D7008CA888 /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
+		FE156FA527EB7A65008CA888 /* CategoriesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesPresenter.swift; sourceTree = "<group>"; };
+		FE156FA827EB8286008CA888 /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		FE156FA927EB8286008CA888 /* ItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCollectionViewCell.xib; sourceTree = "<group>"; };
+		FE5E9E4027EB575A00C78200 /* CategoriesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesService.swift; sourceTree = "<group>"; };
 		FE97BE2927EB5391006B7FD3 /* ShoppingCiscoKurnosov.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingCiscoKurnosov.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE97BE2C27EB5391006B7FD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE97BE2E27EB5391006B7FD3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FE97BE3027EB5391006B7FD3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		FE97BE3327EB5391006B7FD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FE97BE3627EB5391006B7FD3 /* ShoppingCiscoKurnosov.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShoppingCiscoKurnosov.xcdatamodel; sourceTree = "<group>"; };
 		FE97BE3827EB5393006B7FD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE97BE3B27EB5393006B7FD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -78,6 +86,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FE156FA027EB799D008CA888 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				FE156FA227EB79D7008CA888 /* CategoriesViewController.swift */,
+				FE156FA127EB79D7008CA888 /* CategoriesViewController.xib */,
+				FE156FA527EB7A65008CA888 /* CategoriesPresenter.swift */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		FE156FA727EB8252008CA888 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				FE156FA827EB8286008CA888 /* ItemCollectionViewCell.swift */,
+				FE156FA927EB8286008CA888 /* ItemCollectionViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		FE5E9E3F27EB573100C78200 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				FE5E9E4027EB575A00C78200 /* CategoriesService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		FE5E9E4227EB787F00C78200 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				FE156FA027EB799D008CA888 /* Categories */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
 		FE97BE2027EB5391006B7FD3 = {
 			isa = PBXGroup;
 			children = (
@@ -101,10 +144,10 @@
 		FE97BE2B27EB5391006B7FD3 /* ShoppingCiscoKurnosov */ = {
 			isa = PBXGroup;
 			children = (
+				FE5E9E3F27EB573100C78200 /* Service */,
+				FE97BE5F27EB53EE006B7FD3 /* UI */,
 				FE97BE2C27EB5391006B7FD3 /* AppDelegate.swift */,
 				FE97BE2E27EB5391006B7FD3 /* SceneDelegate.swift */,
-				FE97BE3027EB5391006B7FD3 /* ViewController.swift */,
-				FE97BE3227EB5391006B7FD3 /* Main.storyboard */,
 				FE97BE3827EB5393006B7FD3 /* Assets.xcassets */,
 				FE97BE3A27EB5393006B7FD3 /* LaunchScreen.storyboard */,
 				FE97BE3D27EB5393006B7FD3 /* Info.plist */,
@@ -128,6 +171,15 @@
 				FE97BE5227EB5394006B7FD3 /* ShoppingCiscoKurnosovUITestsLaunchTests.swift */,
 			);
 			path = ShoppingCiscoKurnosovUITests;
+			sourceTree = "<group>";
+		};
+		FE97BE5F27EB53EE006B7FD3 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				FE156FA727EB8252008CA888 /* Cells */,
+				FE5E9E4227EB787F00C78200 /* Scenes */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,7 +288,8 @@
 			files = (
 				FE97BE3C27EB5393006B7FD3 /* LaunchScreen.storyboard in Resources */,
 				FE97BE3927EB5393006B7FD3 /* Assets.xcassets in Resources */,
-				FE97BE3427EB5391006B7FD3 /* Main.storyboard in Resources */,
+				FE156FA327EB79D7008CA888 /* CategoriesViewController.xib in Resources */,
+				FE156FAB27EB8286008CA888 /* ItemCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,10 +314,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE97BE3127EB5391006B7FD3 /* ViewController.swift in Sources */,
 				FE97BE2D27EB5391006B7FD3 /* AppDelegate.swift in Sources */,
+				FE156FAA27EB8286008CA888 /* ItemCollectionViewCell.swift in Sources */,
+				FE156FA427EB79D7008CA888 /* CategoriesViewController.swift in Sources */,
 				FE97BE3727EB5391006B7FD3 /* ShoppingCiscoKurnosov.xcdatamodeld in Sources */,
 				FE97BE2F27EB5391006B7FD3 /* SceneDelegate.swift in Sources */,
+				FE156FA627EB7A65008CA888 /* CategoriesPresenter.swift in Sources */,
+				FE5E9E4127EB575A00C78200 /* CategoriesService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,14 +357,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		FE97BE3227EB5391006B7FD3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FE97BE3327EB5391006B7FD3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		FE97BE3A27EB5393006B7FD3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -370,7 +418,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -424,7 +472,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -446,7 +494,7 @@
 				INFOPLIST_FILE = ShoppingCiscoKurnosov/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -474,7 +522,7 @@
 				INFOPLIST_FILE = ShoppingCiscoKurnosov/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
