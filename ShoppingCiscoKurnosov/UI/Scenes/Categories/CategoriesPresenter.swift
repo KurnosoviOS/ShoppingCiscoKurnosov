@@ -11,6 +11,7 @@ protocol CategoriesView: AnyObject {
     func showCategories(list: [Category])
     func showItems(list: [Item], color: UIColor)
     func setSelectedCategory(selectedNumber: Int)
+    func showBasketBagdeNumber(_ number: Int)
 }
 
 class CategoriesPresenter {
@@ -19,6 +20,7 @@ class CategoriesPresenter {
     
     var selectedPage = 0
     var categories: [Category] = []
+    var itemsInBasket: [Item] = []
     
     init(
         view: CategoriesView,
@@ -30,11 +32,12 @@ class CategoriesPresenter {
     
     func requestData() {
         //TODO: show an error
-        service.loadCategories { [weak self] categories, _ in
+        service.loadCategories { [weak self, weak view] categories, _ in
             self?.categories = categories.sorted { $0.name < $1.name }
             
             self?.showCategories()
             self?.showPage()
+            view?.showBasketBagdeNumber(0)
         }
     }
     
@@ -66,6 +69,13 @@ class CategoriesPresenter {
         selectedPage = number
         showPage()
     }
+    
+    func addItemToBasket(item: Item) {
+        itemsInBasket.append(item)
+        view?.showBasketBagdeNumber(itemsInBasket.count)
+    }
+    
+    // MARK: - private funcs
     
     private func showPage() {
         let category = categories[selectedPage]

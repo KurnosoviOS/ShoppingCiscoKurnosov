@@ -7,21 +7,43 @@
 
 import UIKit
 
-class CategoriesViewController: UIViewController, CategoriesView {
+protocol PrepareDropTargetDelegate: AnyObject {
+    func setPreparedForDropEnabled(_ enabled: Bool)
+}
+
+class CategoriesViewController: UIViewController, CategoriesView, PrepareDropTargetDelegate {
     
     @IBOutlet weak var itemsCollectionView: UICollectionView?
     @IBOutlet weak var categoriesCollectionView: UICollectionView?
+    @IBOutlet weak var basketButtonCollectionView: UICollectionView?
+    @IBOutlet weak var basketButton: UIButton?
+    @IBOutlet weak var basketBadgeLabel: UILabel?
+    
+    @IBOutlet weak var basketYOffset: NSLayoutConstraint?
+    @IBOutlet weak var basketXOffset: NSLayoutConstraint?
     
     var presenter: CategoriesPresenter?
     
-    private var itemsCollectionHandler = ItemsCollectionHandler()
-    private var categoriesCollectionHandler = CategoriesCollectionHandler()
+    private let itemsCollectionHandler = ItemsCollectionHandler()
+    private let categoriesCollectionHandler = CategoriesCollectionHandler()
+    private let basketCollectionHandler = BasketCollectionHandler()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+#if DEBUG
+#else
+#error ("todo handler")
+#endif
+        
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(dragBasket(_:)))
+        basketButton?.addGestureRecognizer(panGesture)
+        basketBadgeLabel?.layer.cornerRadius = 10
+        basketBadgeLabel?.clipsToBounds = true
+        
         if let itemsCollectionView = itemsCollectionView {
             itemsCollectionHandler.configureCollectionView(itemsCollectionView)
+            itemsCollectionHandler.prepareDropTargetDelegate = self
         }
         
         if let categoryCollectionView = categoriesCollectionView {
@@ -29,7 +51,60 @@ class CategoriesViewController: UIViewController, CategoriesView {
             categoriesCollectionHandler.presenter = presenter
         }
         
+        if let basketButtonCollectionView = basketButtonCollectionView {
+            basketCollectionHandler.configureCollectionView(basketButtonCollectionView)
+            basketCollectionHandler.presenter = presenter
+        }
+        
         configureGestures()
+    }
+    
+    @objc func dragBasket(_ sender: UIPanGestureRecognizer){
+        let translation = sender.translation(in: view)
+        
+        guard sender.state != .ended
+            && sender.state != .cancelled
+            && sender.state != .failed
+        else {
+            alignBasket()
+            return
+        }
+        
+        basketXOffset?.constant -= translation.x
+        basketYOffset?.constant -= translation.y
+        
+        sender.setTranslation(CGPoint.zero, in: view)
+#if DEBUG
+#else
+#error ("todo remove")
+#endif
+        /*
+        viewDrag.center = CGPoint(x: viewDrag.center.x + translation.x, y: viewDrag.center.y + translation.y)
+        sender.setTranslation(CGPoint.zero, in: self.view)
+         */
+    }
+    
+    private func alignBasket() {
+        guard let basketButton = basketButton else {
+            return
+        }
+        
+        if basketButton.center.x < UIScreen.main.bounds.width / 2 {
+            basketXOffset?.constant = UIScreen.main.bounds.width - basketButton.frame.width - 15
+        }
+        else {
+            basketXOffset?.constant = 15
+        }
+        
+        if basketButton.center.y < UIScreen.main.bounds.height / 2 {
+            basketYOffset?.constant = UIScreen.main.bounds.height
+                - basketButton.frame.height
+                - view.safeAreaInsets.top
+                - 30
+        }
+        else {
+            basketYOffset?.constant = 15
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,6 +136,22 @@ class CategoriesViewController: UIViewController, CategoriesView {
         categoriesCollectionHandler.selectedNumber = selectedNumber
     }
     
+    func showBasketBagdeNumber(_ number: Int) {
+        DispatchQueue.main.async {
+            self.basketBadgeLabel?.isHidden = (number <= 0)
+            
+            self.basketBadgeLabel?.text = "\(number)"
+        }
+    }
+    
+    
+    // MARK: - PrepareDropTargetDelegate
+    
+    func setPreparedForDropEnabled(_ enabled: Bool) {
+        basketButtonCollectionView?.isUserInteractionEnabled = enabled
+        basketButton?.isUserInteractionEnabled = !enabled
+    }
+    
 #if DEBUG
 #else
 #error ("todo divide into separated files")
@@ -76,6 +167,7 @@ class CategoriesViewController: UIViewController, CategoriesView {
         
         var items: [Item] = []
         var color: UIColor = .white
+        weak var prepareDropTargetDelegate: PrepareDropTargetDelegate?
         
         func configureCollectionView(_ collectionView: UICollectionView) {
             collectionView.register(
@@ -131,6 +223,14 @@ class CategoriesViewController: UIViewController, CategoriesView {
             drag.localObject = item
             
             return [drag]
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, dragSessionWillBegin session: UIDragSession) {
+            prepareDropTargetDelegate?.setPreparedForDropEnabled(true)
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, dragSessionDidEnd session: UIDragSession) {
+            prepareDropTargetDelegate?.setPreparedForDropEnabled(false)
         }
         
         func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
@@ -276,7 +376,7 @@ private extension CGFloat {
     static let categoryCellMargin: CGFloat = 10
 }
 
-private extension UICollectionViewCell {
+extension UICollectionViewCell {
     func setSelected(_ isSelected: Bool) {
         layer.borderWidth = isSelected ? 3 : 0
         layer.borderColor = UIColor.green.cgColor

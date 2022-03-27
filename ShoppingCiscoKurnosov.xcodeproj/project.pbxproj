@@ -21,6 +21,9 @@
 		FE97BE4727EB5394006B7FD3 /* ShoppingCiscoKurnosovTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE97BE4627EB5394006B7FD3 /* ShoppingCiscoKurnosovTests.swift */; };
 		FE97BE5127EB5394006B7FD3 /* ShoppingCiscoKurnosovUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE97BE5027EB5394006B7FD3 /* ShoppingCiscoKurnosovUITests.swift */; };
 		FE97BE5327EB5394006B7FD3 /* ShoppingCiscoKurnosovUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE97BE5227EB5394006B7FD3 /* ShoppingCiscoKurnosovUITestsLaunchTests.swift */; };
+		FEE09EE727EF2669003651B3 /* EmptyGridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE09EE527EF2669003651B3 /* EmptyGridCollectionViewCell.swift */; };
+		FEE09EE827EF2669003651B3 /* EmptyGridCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEE09EE627EF2669003651B3 /* EmptyGridCollectionViewCell.xib */; };
+		FEE09EEB27EF3623003651B3 /* GridCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE09EEA27EF3623003651B3 /* GridCollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,9 @@
 		FE97BE4C27EB5394006B7FD3 /* ShoppingCiscoKurnosovUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShoppingCiscoKurnosovUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE97BE5027EB5394006B7FD3 /* ShoppingCiscoKurnosovUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCiscoKurnosovUITests.swift; sourceTree = "<group>"; };
 		FE97BE5227EB5394006B7FD3 /* ShoppingCiscoKurnosovUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCiscoKurnosovUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FEE09EE527EF2669003651B3 /* EmptyGridCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyGridCollectionViewCell.swift; sourceTree = "<group>"; };
+		FEE09EE627EF2669003651B3 /* EmptyGridCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyGridCollectionViewCell.xib; sourceTree = "<group>"; };
+		FEE09EEA27EF3623003651B3 /* GridCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +95,7 @@
 		FE156FA027EB799D008CA888 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				FEE09EE927EF359B003651B3 /* Subviews */,
 				FE156FA227EB79D7008CA888 /* CategoriesViewController.swift */,
 				FE156FA127EB79D7008CA888 /* CategoriesViewController.xib */,
 				FE156FA527EB7A65008CA888 /* CategoriesPresenter.swift */,
@@ -101,6 +108,8 @@
 			children = (
 				FE156FA827EB8286008CA888 /* ItemCollectionViewCell.swift */,
 				FE156FA927EB8286008CA888 /* ItemCollectionViewCell.xib */,
+				FEE09EE527EF2669003651B3 /* EmptyGridCollectionViewCell.swift */,
+				FEE09EE627EF2669003651B3 /* EmptyGridCollectionViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -180,6 +189,14 @@
 				FE5E9E4227EB787F00C78200 /* Scenes */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		FEE09EE927EF359B003651B3 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				FEE09EEA27EF3623003651B3 /* GridCollectionView.swift */,
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,6 +306,7 @@
 				FE97BE3C27EB5393006B7FD3 /* LaunchScreen.storyboard in Resources */,
 				FE97BE3927EB5393006B7FD3 /* Assets.xcassets in Resources */,
 				FE156FA327EB79D7008CA888 /* CategoriesViewController.xib in Resources */,
+				FEE09EE827EF2669003651B3 /* EmptyGridCollectionViewCell.xib in Resources */,
 				FE156FAB27EB8286008CA888 /* ItemCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,11 +334,13 @@
 			files = (
 				FE97BE2D27EB5391006B7FD3 /* AppDelegate.swift in Sources */,
 				FE156FAA27EB8286008CA888 /* ItemCollectionViewCell.swift in Sources */,
+				FEE09EE727EF2669003651B3 /* EmptyGridCollectionViewCell.swift in Sources */,
 				FE156FA427EB79D7008CA888 /* CategoriesViewController.swift in Sources */,
 				FE97BE3727EB5391006B7FD3 /* ShoppingCiscoKurnosov.xcdatamodeld in Sources */,
 				FE97BE2F27EB5391006B7FD3 /* SceneDelegate.swift in Sources */,
 				FE156FA627EB7A65008CA888 /* CategoriesPresenter.swift in Sources */,
 				FE5E9E4127EB575A00C78200 /* CategoriesService.swift in Sources */,
+				FEE09EEB27EF3623003651B3 /* GridCollectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
