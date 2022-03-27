@@ -72,9 +72,9 @@ class BasketViewController:
     
     // MARK: - BasketCollectionView
     
-    func updateCategoryItems(_ items: [(Item, Category)]) {
+    func updateCategoryItems(_ items: [CategoryItem]) {
         DispatchQueue.global(qos: .utility).async {
-            self.categoryItems = items.sorted { $0.0.name < $1.0.name }
+            self.categoryItems = items.sorted { $0.item.name < $1.item.name }
             
             let rowsCount = items.count / 2 + items.count % 2
             
@@ -91,7 +91,7 @@ class BasketViewController:
         }
     }
     
-    private var categoryItems: [(Item, Category)] = []
+    private var categoryItems: [CategoryItem] = []
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard section == 0 else {
@@ -110,10 +110,10 @@ class BasketViewController:
             for: indexPath
         )
         
-        cell.backgroundColor = categoryItems[indexPath.row].1.color
+        cell.backgroundColor = categoryItems[indexPath.row].category.color
         
         if let itemCell = cell as? ItemCollectionViewCell {
-            itemCell.nameLabel?.text = categoryItems[indexPath.row].0.name
+            itemCell.nameLabel?.text = categoryItems[indexPath.row].item.name
         }
         
         return cell

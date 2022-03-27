@@ -20,7 +20,7 @@ protocol CategoriesView: AnyObject, CanShowAlert {
 }
 
 protocol BasketCollectionView: AnyObject, CanShowAlert {
-    func updateCategoryItems(_ items: [(Item, Category)])
+    func updateCategoryItems(_ items: [CategoryItem])
 }
 
 // TODO: This should be separated into several presenters and the models should be extracted from here
@@ -31,7 +31,7 @@ class CategoriesPresenter {
     
     var selectedPage = 0
     var categories: [Category] = []
-    var itemsInBasket: [(Item, Category)] = []
+    var itemsInBasket: [CategoryItem] = []
     
     init(
         view: CategoriesView,
@@ -88,7 +88,7 @@ class CategoriesPresenter {
     func addItemToBasket(item: Item) {
         let category = categories[selectedPage]
         
-        itemsInBasket.append((item, category))
+        itemsInBasket.append(.init(item: item, category: category.title))
         view?.showBasketBagdeNumber(itemsInBasket.count)
     }
     

@@ -17,27 +17,36 @@ struct Item: Codable {
 
 struct Category: Codable {
     let name: String
-    let colour: String
+    fileprivate let colour: String
     let items: [Item]
     
     var color: UIColor {
-        let rStr = colour.substring(1 ..< 3)
-        let gStr = colour.substring(3 ..< 5)
-        let bStr = colour.substring(5 ..< 7)
-        
-        guard
-            let r = Int(rStr, radix: 16),
-            let g = Int(gStr, radix: 16),
-            let b = Int(bStr, radix: 16) else {
-            return .white
-        }
-        
+        colour.color
+    }
+    
+    var title: CategoryTitle {
         return .init(
-            red: CGFloat(r) / 256,
-            green: CGFloat(g) / 256,
-            blue: CGFloat(b) / 256,
-            alpha: 1
+            name: name,
+            colour: colour
         )
+    }
+}
+
+struct CategoryTitle {
+    let name: String
+    let colour: String
+    
+    var color: UIColor {
+        colour.color
+    }
+}
+
+struct CategoryItem {
+    let item: Item
+    let category: CategoryTitle
+    
+    var color: UIColor {
+        category.color
     }
 }
 
@@ -64,6 +73,28 @@ struct CategoriesService {
                 handler(list.categories, nil)
             }
         }
+    }
+}
+
+private extension String {
+    var color: UIColor {
+        let rStr = self.substring(1 ..< 3)
+        let gStr = self.substring(3 ..< 5)
+        let bStr = self.substring(5 ..< 7)
+        
+        guard
+            let r = Int(rStr, radix: 16),
+            let g = Int(gStr, radix: 16),
+            let b = Int(bStr, radix: 16) else {
+            return .white
+        }
+        
+        return .init(
+            red: CGFloat(r) / 256,
+            green: CGFloat(g) / 256,
+            blue: CGFloat(b) / 256,
+            alpha: 1
+        )
     }
 }
 
