@@ -12,15 +12,18 @@ protocol CategoriesView: AnyObject {
     func showItems(list: [Item], color: UIColor)
     func setSelectedCategory(selectedNumber: Int)
     func showBasketBagdeNumber(_ number: Int)
+    func showBasket(isVisible: Bool)
 }
 
+// TODO: This should be separated into several presenters and the models should be extracted from here
 class CategoriesPresenter {
     private weak var view: CategoriesView?
+    weak var basketCollectionView: BasketCollectionView?
     private let service: CategoriesService
     
     var selectedPage = 0
     var categories: [Category] = []
-    var itemsInBasket: [Item] = []
+    var itemsInBasket: [(Item, Category)] = []
     
     init(
         view: CategoriesView,
@@ -39,6 +42,10 @@ class CategoriesPresenter {
             self?.showPage()
             view?.showBasketBagdeNumber(0)
         }
+    }
+    
+    func requestBasketItems() {
+        basketCollectionView?.updateCategoryItems(itemsInBasket)
     }
     
     func showNextPage() {
@@ -71,16 +78,27 @@ class CategoriesPresenter {
     }
     
     func addItemToBasket(item: Item) {
-        itemsInBasket.append(item)
+        let category = categories[selectedPage]
+        
+        itemsInBasket.append((item, category))
         view?.showBasketBagdeNumber(itemsInBasket.count)
     }
+    
+    func showBasket(isVisible: Bool) {
+        view?.showBasket(isVisible: isVisible)
+    }
+    
     
     // MARK: - private funcs
     
     private func showPage() {
         let category = categories[selectedPage]
         
-        view?.showItems(list: category.items + category.items + category.items, color: category.color)
+        DispatchQueue.global(qos: .utility).async {
+            let items = category.items.sorted { $0.name < $1.name }
+            
+            self.view?.showItems(list: items, color: category.color)
+        }
     }
     
     private func showCategories() {

@@ -77,3 +77,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension CGFloat {
+    static let screenWidth = UIScreen.main.bounds.width < UIScreen.main.bounds.height
+        ? UIScreen.main.bounds.width
+        : UIScreen.main.bounds.height
+    
+    static let screenHeight = UIScreen.main.bounds.width < UIScreen.main.bounds.height
+        ? UIScreen.main.bounds.height
+        : UIScreen.main.bounds.width
+}

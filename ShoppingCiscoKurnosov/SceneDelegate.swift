@@ -19,10 +19,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // TODO: router
         let vc = CategoriesViewController(nibName: "CategoriesViewController", bundle: nil)
         
-        let service = CategoriesService()
-        let presenter = CategoriesPresenter(view: vc, service: service)
-        
-        vc.presenter = presenter
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
     }

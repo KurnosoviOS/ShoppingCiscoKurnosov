@@ -1,5 +1,5 @@
 //
-//  GridCollectionView.swift
+//  BasketTargetCollectionHandler.swift
 //  ShoppingCiscoKurnosov
 //
 //  Created by Алексей Курносов on 26.03.2022.
@@ -7,15 +7,28 @@
 
 import UIKit
 
-class BasketCollectionHandler:
+class BasketTargetCollectionHandler:
     NSObject,
     UICollectionViewDataSource,
     UICollectionViewDropDelegate,
     UICollectionViewDelegate {
     
-    var presenter: CategoriesPresenter?
+    private let presenter: CategoriesPresenter
+    private weak var collectionView: UICollectionView?
     
-    func configureCollectionView(_ collectionView: UICollectionView) {
+    init(
+        presenter: CategoriesPresenter,
+        collectionView: UICollectionView
+    ) {
+        self.presenter = presenter
+        self.collectionView = collectionView
+        
+        super.init()
+        
+        configureCollectionView(collectionView)
+    }
+    
+    private func configureCollectionView(_ collectionView: UICollectionView) {
         collectionView.register(
             UINib(nibName: "EmptyGridCollectionViewCell", bundle: nil),
             forCellWithReuseIdentifier: EmptyGridCollectionViewCell.reuseIdentifier
@@ -59,7 +72,7 @@ class BasketCollectionHandler:
             return
         }
         
-        presenter?.addItemToBasket(item: item)
+        presenter.addItemToBasket(item: item)
     }
     
     private var basketSize: CGFloat = 110
