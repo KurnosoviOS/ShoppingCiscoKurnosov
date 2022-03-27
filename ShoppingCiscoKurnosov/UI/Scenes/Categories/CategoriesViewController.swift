@@ -53,16 +53,11 @@ class CategoriesViewController:
         
         alignBasket(fromScratch: true)
         
-        if UIDevice.current.orientation.isPortrait {
-            popoverController?.permittedArrowDirections = [.up, .down]
-        }
-        else {
-            popoverController?.permittedArrowDirections = [.left, .right]
-        }
+        adjustPopoverArrowDirections()
     }
     
     
-    // MARK: - configuring
+    // MARK: - Configuring
     
     private func configureViews() {
         basketBadgeLabel?.layer.cornerRadius = 10
@@ -161,12 +156,7 @@ class CategoriesViewController:
                 self.popoverController = popoverController
                 
                 popoverController.delegate = self
-                if UIDevice.current.orientation.isPortrait {
-                    self.popoverController?.permittedArrowDirections = [.up, .down]
-                }
-                else {
-                    self.popoverController?.permittedArrowDirections = [.left, .right]
-                }
+                self.adjustPopoverArrowDirections()
                 
                 if let basketButton = self.basketButton {
                     popoverController.sourceView = basketButton
@@ -177,6 +167,15 @@ class CategoriesViewController:
             else {
                 self.dismiss(animated: true)
             }
+        }
+    }
+    
+    private func adjustPopoverArrowDirections() {
+        switch UIDevice.current.orientation {
+        case .landscapeLeft, .landscapeRight:
+            popoverController?.permittedArrowDirections = [.left, .right]
+        default:
+            popoverController?.permittedArrowDirections = [.up, .down]
         }
     }
     
