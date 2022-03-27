@@ -45,7 +45,6 @@ class CategoriesPresenter {
         service.loadCategories { [weak self, weak view] categories, error in
             if let error = error {
                 view?.showAlert(text: error.localizedDescription, okCallback: nil)
-                return
             }
             
             self?.categories = categories.sorted { $0.name < $1.name }
