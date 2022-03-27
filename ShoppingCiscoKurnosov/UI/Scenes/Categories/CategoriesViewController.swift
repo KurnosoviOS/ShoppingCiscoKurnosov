@@ -48,7 +48,10 @@ class CategoriesViewController:
         presenter.requestData()
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    override func viewWillTransition(
+        to size: CGSize,
+        with coordinator: UIViewControllerTransitionCoordinator
+    ) {
         super.viewWillTransition(to: size, with: coordinator)
         
         alignBasket(fromScratch: true)
@@ -263,5 +266,29 @@ class CategoriesViewController:
         
         basketXOffset?.constant = xConstant
         basketYOffset?.constant = yConstant
+    }
+}
+
+extension UIViewController: CanShowAlert {
+    func showAlert(text: String, okCallback: (() -> Void)?) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(
+                title: nil,
+                message: text,
+                preferredStyle: .alert
+            )
+            
+            alert.addAction(
+                UIAlertAction(
+                    title: "OK",
+                    style: .default,
+                    handler: { _ in
+                        okCallback?()
+                    }
+                )
+            )
+            
+            self.present(alert, animated: true)
+        }
     }
 }

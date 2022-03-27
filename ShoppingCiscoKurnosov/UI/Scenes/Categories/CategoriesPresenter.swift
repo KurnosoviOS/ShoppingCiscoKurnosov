@@ -7,12 +7,20 @@
 
 import UIKit
 
-protocol CategoriesView: AnyObject {
+protocol CanShowAlert {
+    func showAlert(text: String, okCallback: (() -> Void)?)
+}
+
+protocol CategoriesView: AnyObject, CanShowAlert {
     func showCategories(list: [Category])
     func showItems(list: [Item], color: UIColor)
     func setSelectedCategory(selectedNumber: Int)
     func showBasketBagdeNumber(_ number: Int)
     func showBasket(isVisible: Bool)
+}
+
+protocol BasketCollectionView: AnyObject, CanShowAlert {
+    func updateCategoryItems(_ items: [(Item, Category)])
 }
 
 // TODO: This should be separated into several presenters and the models should be extracted from here
@@ -86,6 +94,16 @@ class CategoriesPresenter {
     
     func showBasket(isVisible: Bool) {
         view?.showBasket(isVisible: isVisible)
+    }
+    
+    func sendCheckout() {
+        basketCollectionView?.showAlert(text: "Successfully saved!") {
+            self.view?.showBasket(isVisible: false)
+            
+            // TODO: do we need it?
+            self.itemsInBasket = []
+            self.view?.showBasketBagdeNumber(0)
+        }
     }
     
     

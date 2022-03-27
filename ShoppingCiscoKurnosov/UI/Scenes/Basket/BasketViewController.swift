@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol BasketCollectionView: AnyObject {
-    func updateCategoryItems(_ items: [(Item, Category)])
-}
-
 class BasketViewController:
     UIViewController,
     BasketCollectionView,
@@ -34,6 +30,7 @@ class BasketViewController:
         
         checkoutButton.backgroundColor = .blue
         checkoutButton.layer.cornerRadius = 10
+        checkoutButton.addTarget(self, action: #selector(checkoutButtonClick), for: .touchUpInside)
         
         preferredContentSize = .init(
             width: width,
@@ -67,6 +64,10 @@ class BasketViewController:
         
         presenter.basketCollectionView = self
         presenter.requestBasketItems()
+    }
+    
+    @objc func checkoutButtonClick() {
+        presenter?.sendCheckout()
     }
     
     // MARK: - BasketCollectionView
