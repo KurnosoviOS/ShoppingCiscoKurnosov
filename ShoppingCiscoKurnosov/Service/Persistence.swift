@@ -17,7 +17,7 @@ protocol PersistenceServiceProtocol {
 // TODO: handle errors
 class CoreDataService: PersistenceServiceProtocol {
     func addItem(_ item: CategoryItem) {
-        DispatchQueue.global(qos: .utility).async {
+        queue.async {
             let context = self.persistentContainer.viewContext
             
             let managedItem = ItemManaged(context: context)
@@ -35,7 +35,7 @@ class CoreDataService: PersistenceServiceProtocol {
     }
     
     func loadItems(loaded: @escaping ([CategoryItem]) -> Void) {
-        DispatchQueue.global(qos: .utility).async {
+        queue.async {
             let context = self.persistentContainer.viewContext
             let request = ItemManaged.fetchRequest()
             
@@ -64,7 +64,7 @@ class CoreDataService: PersistenceServiceProtocol {
     }
     
     func clearItems() {
-        DispatchQueue.global(qos: .utility).async {
+        queue.async {
             let context = self.persistentContainer.viewContext
             
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ItemManaged")
@@ -78,6 +78,9 @@ class CoreDataService: PersistenceServiceProtocol {
             }
         }
     }
+    
+    // Consecutive queue
+    private var queue = DispatchQueue(label: "CoreDataQueue", qos: .utility)
     
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "ShoppingCiscoKurnosov")

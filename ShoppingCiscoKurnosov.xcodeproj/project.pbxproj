@@ -28,6 +28,8 @@
 		FEC194EF27F0F6B30078058F /* categories.json in Resources */ = {isa = PBXBuildFile; fileRef = FEC194EE27F0F6B30078058F /* categories.json */; };
 		FEC194F227F0F8670078058F /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC194F127F0F8670078058F /* Entities.swift */; };
 		FEC194F527F0FFE70078058F /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC194F427F0FFE70078058F /* Persistence.swift */; };
+		FEC194FA27F11D0B0078058F /* CoreDataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC194F927F11D0B0078058F /* CoreDataServiceTests.swift */; };
+		FEC194FC27F12D630078058F /* CategoriesServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC194FB27F12D630078058F /* CategoriesServiceTests.swift */; };
 		FEE09EE727EF2669003651B3 /* EmptyGridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE09EE527EF2669003651B3 /* EmptyGridCollectionViewCell.swift */; };
 		FEE09EE827EF2669003651B3 /* EmptyGridCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEE09EE627EF2669003651B3 /* EmptyGridCollectionViewCell.xib */; };
 		FEE09EEB27EF3623003651B3 /* BasketTargetCollectionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE09EEA27EF3623003651B3 /* BasketTargetCollectionHandler.swift */; };
@@ -76,6 +78,8 @@
 		FEC194EE27F0F6B30078058F /* categories.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = categories.json; sourceTree = "<group>"; };
 		FEC194F127F0F8670078058F /* Entities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entities.swift; sourceTree = "<group>"; };
 		FEC194F427F0FFE70078058F /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		FEC194F927F11D0B0078058F /* CoreDataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataServiceTests.swift; sourceTree = "<group>"; };
+		FEC194FB27F12D630078058F /* CategoriesServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesServiceTests.swift; sourceTree = "<group>"; };
 		FEE09EE527EF2669003651B3 /* EmptyGridCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyGridCollectionViewCell.swift; sourceTree = "<group>"; };
 		FEE09EE627EF2669003651B3 /* EmptyGridCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyGridCollectionViewCell.xib; sourceTree = "<group>"; };
 		FEE09EEA27EF3623003651B3 /* BasketTargetCollectionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketTargetCollectionHandler.swift; sourceTree = "<group>"; };
@@ -185,6 +189,7 @@
 		FE97BE4527EB5394006B7FD3 /* ShoppingCiscoKurnosovTests */ = {
 			isa = PBXGroup;
 			children = (
+				FEC194F827F11CC30078058F /* ServiceTests */,
 				FE97BE4627EB5394006B7FD3 /* ShoppingCiscoKurnosovTests.swift */,
 			);
 			path = ShoppingCiscoKurnosovTests;
@@ -232,6 +237,15 @@
 				FEC194F127F0F8670078058F /* Entities.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		FEC194F827F11CC30078058F /* ServiceTests */ = {
+			isa = PBXGroup;
+			children = (
+				FEC194F927F11D0B0078058F /* CoreDataServiceTests.swift */,
+				FEC194FB27F12D630078058F /* CategoriesServiceTests.swift */,
+			);
+			path = ServiceTests;
 			sourceTree = "<group>";
 		};
 		FEE09EE927EF359B003651B3 /* Subviews */ = {
@@ -400,6 +414,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEC194FC27F12D630078058F /* CategoriesServiceTests.swift in Sources */,
+				FEC194FA27F11D0B0078058F /* CoreDataServiceTests.swift in Sources */,
 				FE97BE4727EB5394006B7FD3 /* ShoppingCiscoKurnosovTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
