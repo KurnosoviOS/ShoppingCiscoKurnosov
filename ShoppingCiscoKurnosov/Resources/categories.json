@@ -1,0 +1,156 @@
+{
+  "categories": [
+    {
+      "name": "PurpleCat",
+      "colour": "#b794c2",
+      "items": [
+        {
+          "name": "ItemName1"
+        },
+        {
+          "name": "ItemName2"
+        },
+        {
+          "name": "Short"
+        },
+        {
+          "name": "VeryLongItemName_VeryLongItemName"
+        },
+        {
+          "name": "Very Long Item Name With Spaces"
+        },
+        {
+          "name": "Purple Name"
+        },
+        {
+          "name": "Айде един на български"
+        },
+        {
+          "name": "中文文章"
+        },
+        {
+          "name": "Tricky"
+        },
+        {
+          "name": "ItemName1 copied"
+        },
+        {
+          "name": "ItemName2 copied"
+        },
+        {
+          "name": "Short copied"
+        },
+        {
+          "name": "VeryLongItemName_VeryLongItemName copied"
+        },
+        {
+          "name": "Very Long Item Name With Spaces copied"
+        },
+        {
+          "name": "Purple Name copied"
+        },
+        {
+          "name": "Айде един на български copied"
+        },
+        {
+          "name": "中文文章 copied"
+        },
+        {
+          "name": "Tricky"
+        }
+      ]
+    },
+    {
+      "name": "Зелената категория",
+      "colour": "#82a36f",
+      "items": [
+        {
+          "name": "ItemName1"
+        },
+        {
+          "name": "ItemName2"
+        },
+        {
+          "name": "Short"
+        },
+        {
+          "name": "VeryLongItemName_VeryLongItemName"
+        },
+        {
+          "name": "Very Long Item Name With Spaces"
+        },
+        {
+          "name": "Purple Name"
+        },
+        {
+          "name": "Айде един на български"
+        }
+      ]
+    },
+    {
+      "name": "Shorty",
+      "colour": "#ae6944",
+      "items": [
+        {
+          "name": "ItemName1"
+        },
+        {
+          "name": "ItemName2"
+        },
+        {
+          "name": "Short"
+        }
+      ]
+    },
+    {
+      "name": "Category with larger name than expected",
+      "colour": "#9c2828",
+      "items": [
+        {
+          "name": "ItemName1"
+        },
+        {
+          "name": "ItemName2"
+        },
+        {
+          "name": "Short"
+        },
+        {
+          "name": "VeryLongItemName_VeryLongItemName"
+        },
+        {
+          "name": "Very Long Item Name With Spaces"
+        },
+        {
+          "name": "Purple Name"
+        },
+        {
+          "name": "Айде един на български"
+        }
+      ]
+    },
+    {
+      "name": "Category5",
+      "colour": "#af5353",
+      "items": [
+        {
+          "name": "ItemName1"
+        },
+        {
+          "name": "ItemName2"
+        },
+        {
+          "name": " "
+        },
+        {
+          "name": "ItemName4"
+        }
+      ]
+    },
+    {
+      "name": "Empty Cat",
+      "colour": "#7c7c7c",
+      "items": []
+    }
+  ]
+}

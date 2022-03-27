@@ -42,8 +42,12 @@ class CategoriesPresenter {
     }
     
     func requestData() {
-        //TODO: show an error
-        service.loadCategories { [weak self, weak view] categories, _ in
+        service.loadCategories { [weak self, weak view] categories, error in
+            if let error = error {
+                view?.showAlert(text: error.localizedDescription, okCallback: nil)
+                return
+            }
+            
             self?.categories = categories.sorted { $0.name < $1.name }
             
             self?.showCategories()

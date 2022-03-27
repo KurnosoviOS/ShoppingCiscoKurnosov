@@ -25,6 +25,8 @@
 		FEC194E827F09A5F0078058F /* BasketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEC194E627F09A5F0078058F /* BasketViewController.xib */; };
 		FEC194EA27F0E6460078058F /* ItemsCollectionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC194E927F0E6460078058F /* ItemsCollectionHandler.swift */; };
 		FEC194EC27F0E6E80078058F /* CategoriesCollectionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC194EB27F0E6E80078058F /* CategoriesCollectionHandler.swift */; };
+		FEC194EF27F0F6B30078058F /* categories.json in Resources */ = {isa = PBXBuildFile; fileRef = FEC194EE27F0F6B30078058F /* categories.json */; };
+		FEC194F227F0F8670078058F /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC194F127F0F8670078058F /* Entities.swift */; };
 		FEE09EE727EF2669003651B3 /* EmptyGridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE09EE527EF2669003651B3 /* EmptyGridCollectionViewCell.swift */; };
 		FEE09EE827EF2669003651B3 /* EmptyGridCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEE09EE627EF2669003651B3 /* EmptyGridCollectionViewCell.xib */; };
 		FEE09EEB27EF3623003651B3 /* BasketTargetCollectionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE09EEA27EF3623003651B3 /* BasketTargetCollectionHandler.swift */; };
@@ -70,6 +72,8 @@
 		FEC194E627F09A5F0078058F /* BasketViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasketViewController.xib; sourceTree = "<group>"; };
 		FEC194E927F0E6460078058F /* ItemsCollectionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsCollectionHandler.swift; sourceTree = "<group>"; };
 		FEC194EB27F0E6E80078058F /* CategoriesCollectionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionHandler.swift; sourceTree = "<group>"; };
+		FEC194EE27F0F6B30078058F /* categories.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = categories.json; sourceTree = "<group>"; };
+		FEC194F127F0F8670078058F /* Entities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entities.swift; sourceTree = "<group>"; };
 		FEE09EE527EF2669003651B3 /* EmptyGridCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyGridCollectionViewCell.swift; sourceTree = "<group>"; };
 		FEE09EE627EF2669003651B3 /* EmptyGridCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyGridCollectionViewCell.xib; sourceTree = "<group>"; };
 		FEE09EEA27EF3623003651B3 /* BasketTargetCollectionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketTargetCollectionHandler.swift; sourceTree = "<group>"; };
@@ -162,6 +166,8 @@
 		FE97BE2B27EB5391006B7FD3 /* ShoppingCiscoKurnosov */ = {
 			isa = PBXGroup;
 			children = (
+				FEC194F027F0F8500078058F /* Entities */,
+				FEC194ED27F0F5A70078058F /* Resources */,
 				FE5E9E3F27EB573100C78200 /* Service */,
 				FE97BE5F27EB53EE006B7FD3 /* UI */,
 				FE97BE2C27EB5391006B7FD3 /* AppDelegate.swift */,
@@ -207,6 +213,22 @@
 				FEC194E627F09A5F0078058F /* BasketViewController.xib */,
 			);
 			path = Basket;
+			sourceTree = "<group>";
+		};
+		FEC194ED27F0F5A70078058F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FEC194EE27F0F6B30078058F /* categories.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		FEC194F027F0F8500078058F /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				FEC194F127F0F8670078058F /* Entities.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		FEE09EE927EF359B003651B3 /* Subviews */ = {
@@ -323,6 +345,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEC194EF27F0F6B30078058F /* categories.json in Resources */,
 				FE97BE3C27EB5393006B7FD3 /* LaunchScreen.storyboard in Resources */,
 				FE97BE3927EB5393006B7FD3 /* Assets.xcassets in Resources */,
 				FE156FA327EB79D7008CA888 /* CategoriesViewController.xib in Resources */,
@@ -358,6 +381,7 @@
 				FEE09EE727EF2669003651B3 /* EmptyGridCollectionViewCell.swift in Sources */,
 				FE156FA427EB79D7008CA888 /* CategoriesViewController.swift in Sources */,
 				FEC194EC27F0E6E80078058F /* CategoriesCollectionHandler.swift in Sources */,
+				FEC194F227F0F8670078058F /* Entities.swift in Sources */,
 				FE97BE3727EB5391006B7FD3 /* ShoppingCiscoKurnosov.xcdatamodeld in Sources */,
 				FE97BE2F27EB5391006B7FD3 /* SceneDelegate.swift in Sources */,
 				FEC194E727F09A5F0078058F /* BasketViewController.swift in Sources */,
