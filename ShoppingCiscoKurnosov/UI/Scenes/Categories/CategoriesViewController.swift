@@ -14,8 +14,7 @@ protocol PrepareDropTargetDelegate: AnyObject {
 class CategoriesViewController:
     UIViewController,
     CategoriesView,
-    PrepareDropTargetDelegate,
-    UIPopoverPresentationControllerDelegate {
+    PrepareDropTargetDelegate {
     
     @IBOutlet weak var itemsCollectionView: UICollectionView?
     @IBOutlet weak var categoriesCollectionView: UICollectionView?
@@ -246,13 +245,6 @@ class CategoriesViewController:
         basketButton?.isUserInteractionEnabled = !enabled
     }
     
-    
-    // MARK: - UIPopoverPresentationControllerDelegate
-    
-    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        return .none
-    }
-    
     // MARK: - swipe main screen
     
     @objc func swipeMainCollection(_ sender:UISwipeGestureRecognizer) {
@@ -326,25 +318,23 @@ class CategoriesViewController:
 }
 
 extension UIViewController: CanShowAlert {
+    func showAlert(text: String, timeout: TimeInterval, okCallback: (() -> Void)?) {
+        let targetFrame: CGRect = .init(
+            x: 0,
+            y: 0,
+            width: view.frame.width,
+            height: 50
+        )
+        
+        showToast(
+            text: text,
+            timeout: timeout,
+            targetFrame: targetFrame,
+            disappearCallback: okCallback
+        )
+    }
+    
     func showAlert(text: String, okCallback: (() -> Void)?) {
-        DispatchQueue.main.async {
-            let alert = UIAlertController(
-                title: nil,
-                message: text,
-                preferredStyle: .alert
-            )
-            
-            alert.addAction(
-                UIAlertAction(
-                    title: "OK",
-                    style: .default,
-                    handler: { _ in
-                        okCallback?()
-                    }
-                )
-            )
-            
-            self.present(alert, animated: true)
-        }
+        showAlert(text: text, timeout: 2, okCallback: okCallback)
     }
 }

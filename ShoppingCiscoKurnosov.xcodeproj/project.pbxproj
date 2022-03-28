@@ -33,6 +33,7 @@
 		FEE09EE727EF2669003651B3 /* EmptyGridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE09EE527EF2669003651B3 /* EmptyGridCollectionViewCell.swift */; };
 		FEE09EE827EF2669003651B3 /* EmptyGridCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEE09EE627EF2669003651B3 /* EmptyGridCollectionViewCell.xib */; };
 		FEE09EEB27EF3623003651B3 /* BasketTargetCollectionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE09EEA27EF3623003651B3 /* BasketTargetCollectionHandler.swift */; };
+		FEEAC76327F1443700CCFFB9 /* ToastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEAC76127F1443700CCFFB9 /* ToastViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		FEE09EE527EF2669003651B3 /* EmptyGridCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyGridCollectionViewCell.swift; sourceTree = "<group>"; };
 		FEE09EE627EF2669003651B3 /* EmptyGridCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyGridCollectionViewCell.xib; sourceTree = "<group>"; };
 		FEE09EEA27EF3623003651B3 /* BasketTargetCollectionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketTargetCollectionHandler.swift; sourceTree = "<group>"; };
+		FEEAC76127F1443700CCFFB9 /* ToastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 		FE5E9E4227EB787F00C78200 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				FEEAC76027F143FF00CCFFB9 /* Toast */,
 				FEC194E427F098E20078058F /* Basket */,
 				FE156FA027EB799D008CA888 /* Categories */,
 			);
@@ -256,6 +259,14 @@
 				FEC194EB27F0E6E80078058F /* CategoriesCollectionHandler.swift */,
 			);
 			path = Subviews;
+			sourceTree = "<group>";
+		};
+		FEEAC76027F143FF00CCFFB9 /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				FEEAC76127F1443700CCFFB9 /* ToastViewController.swift */,
+			);
+			path = Toast;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -403,6 +414,7 @@
 				FE97BE3727EB5391006B7FD3 /* ShoppingCiscoKurnosov.xcdatamodeld in Sources */,
 				FE97BE2F27EB5391006B7FD3 /* SceneDelegate.swift in Sources */,
 				FEC194E727F09A5F0078058F /* BasketViewController.swift in Sources */,
+				FEEAC76327F1443700CCFFB9 /* ToastViewController.swift in Sources */,
 				FE156FA627EB7A65008CA888 /* CategoriesPresenter.swift in Sources */,
 				FEC194EA27F0E6460078058F /* ItemsCollectionHandler.swift in Sources */,
 				FE5E9E4127EB575A00C78200 /* CategoriesService.swift in Sources */,

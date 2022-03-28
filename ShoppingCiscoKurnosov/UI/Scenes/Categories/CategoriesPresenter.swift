@@ -99,13 +99,20 @@ class CategoriesPresenter {
     }
     
     func sendCheckout() {
-        basketCollectionView?.showAlert(text: "Successfully saved!") {
-            self.view?.showBasket(isVisible: false)
-            
+        let isSuccess = Bool.random()
+        
+        view?.showBasket(isVisible: false)
+        
+        if isSuccess {
             // TODO: do we need it?
-            self.itemsInBasket = []
-            self.view?.showBasketBagdeNumber(0)
-            self.persistenceService.clearItems()
+            itemsInBasket = []
+            view?.showBasketBagdeNumber(0)
+            persistenceService.clearItems()
+            
+            view?.showAlert(text: "Order completed", timeout: 2, okCallback: nil)
+        }
+        else {
+            view?.showAlert(text: "Something went wrong", timeout: 5, okCallback: nil)
         }
     }
     
@@ -141,6 +148,7 @@ class CategoriesPresenter {
 // TODO: move it to separated file(s)?
 protocol CanShowAlert {
     func showAlert(text: String, okCallback: (() -> Void)?)
+    func showAlert(text: String, timeout: TimeInterval, okCallback: (() -> Void)?)
 }
 
 protocol CategoriesView: AnyObject, CanShowAlert {
