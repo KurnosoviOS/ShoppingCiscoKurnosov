@@ -128,13 +128,63 @@ class CategoriesViewController:
         }
     }
     
-    func showItems(list: [Item], color: UIColor) {
+    func showItems(
+        list: [Item],
+        color: UIColor,
+        animation: PagingAnimation?
+    ) {
         itemsCollectionHandler.items = list
         itemsCollectionHandler.color = color
         
         DispatchQueue.main.async {
-            self.itemsCollectionView?.reloadData()
+            if let animation = animation {
+                self.turnPage(animation: animation)
+            }
+            else {
+                self.itemsCollectionView?.reloadData()
+            }
         }
+    }
+    
+    func turnPage(animation: PagingAnimation) {
+        var firstAction = moveScreenLeft
+        var secondAction = moveScreenRight
+        
+        if PagingAnimation.left == animation {
+            firstAction = moveScreenRight
+            secondAction = moveScreenLeft
+        }
+        
+        DispatchQueue.main.async {
+            UIView.animate(
+                withDuration: 0.1,
+                animations: {
+                    firstAction()
+                }
+            ) { res in
+                self.itemsCollectionView?.reloadData()
+                secondAction()
+                UIView.animate(
+                    withDuration: 0.1,
+                    delay: 0.1,
+                    animations: {
+                        self.moveScreenCenter()
+                    }
+                )
+            }
+        }
+    }
+    
+    private func moveScreenLeft() {
+        itemsCollectionView?.transform = .init(translationX: -.screenWidth, y: 0)
+    }
+    
+    private func moveScreenRight() {
+        itemsCollectionView?.transform = .init(translationX: .screenWidth, y: 0)
+    }
+    
+    private func moveScreenCenter() {
+        itemsCollectionView?.transform = .identity
     }
     
     func setSelectedCategory(selectedNumber: Int) {

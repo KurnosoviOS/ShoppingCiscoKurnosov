@@ -53,7 +53,7 @@ class CategoriesPresenter {
         }
         
         selectedPage += 1
-        showPage()
+        showPage(animation: .right)
         view?.setSelectedCategory(selectedNumber: selectedPage)
     }
     
@@ -63,7 +63,7 @@ class CategoriesPresenter {
         }
         
         selectedPage -= 1
-        showPage()
+        showPage(animation: .left)
         view?.setSelectedCategory(selectedNumber: selectedPage)
     }
     
@@ -72,8 +72,17 @@ class CategoriesPresenter {
             return
         }
         
+        var animation: PagingAnimation? = nil
+        
+        if selectedPage > number {
+            animation = .left
+        }
+        else if selectedPage < number {
+            animation = .right
+        }
+        
         selectedPage = number
-        showPage()
+        showPage(animation: animation)
     }
     
     func addItemToBasket(item: Item) {
@@ -105,17 +114,21 @@ class CategoriesPresenter {
     
     private func showAll() {
         showCategories()
-        showPage()
+        showPage(animation: nil)
         view?.showBasketBagdeNumber(itemsInBasket.count)
     }
     
-    private func showPage() {
+    private func showPage(animation: PagingAnimation?) {
         let category = categories[selectedPage]
         
         DispatchQueue.global(qos: .utility).async {
             let items = category.items.sorted { $0.name < $1.name }
             
-            self.view?.showItems(list: items, color: category.color)
+            self.view?.showItems(
+                list: items,
+                color: category.color,
+                animation: animation
+            )
         }
     }
     
@@ -132,7 +145,11 @@ protocol CanShowAlert {
 
 protocol CategoriesView: AnyObject, CanShowAlert {
     func showCategories(list: [Category])
-    func showItems(list: [Item], color: UIColor)
+    func showItems(
+        list: [Item],
+        color: UIColor,
+        animation: PagingAnimation?
+    )
     func setSelectedCategory(selectedNumber: Int)
     func showBasketBagdeNumber(_ number: Int)
     func showBasket(isVisible: Bool)
@@ -140,4 +157,9 @@ protocol CategoriesView: AnyObject, CanShowAlert {
 
 protocol BasketCollectionView: AnyObject, CanShowAlert {
     func updateCategoryItems(_ items: [CategoryItem])
+}
+
+enum PagingAnimation {
+    case left
+    case right
 }
