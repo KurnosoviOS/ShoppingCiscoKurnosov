@@ -29,7 +29,13 @@ class CategoriesViewController:
     
     lazy private var presenter: CategoriesPresenter = {
         let service = CategoriesService()
-        let presenter = CategoriesPresenter(view: self, service: service)
+        let persistenceService = CoreDataService()
+        
+        let presenter = CategoriesPresenter(
+            view: self,
+            service: service,
+            persistenceService: persistenceService
+        )
         
         return presenter
     }()

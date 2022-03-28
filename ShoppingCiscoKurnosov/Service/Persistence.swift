@@ -8,14 +8,14 @@
 import Foundation
 import CoreData
 
-protocol PersistenceServiceProtocol {
+protocol PersistenceService {
     func addItem(_ item: CategoryItem)
     func loadItems(loaded: @escaping ([CategoryItem]) -> Void)
     func clearItems()
 }
 
 // TODO: handle errors
-class CoreDataService: PersistenceServiceProtocol {
+class CoreDataService: PersistenceService {
     func addItem(_ item: CategoryItem) {
         queue.async {
             let context = self.persistentContainer.viewContext

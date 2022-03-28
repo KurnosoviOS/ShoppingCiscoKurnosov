@@ -7,27 +7,12 @@
 
 import UIKit
 
-protocol CanShowAlert {
-    func showAlert(text: String, okCallback: (() -> Void)?)
-}
-
-protocol CategoriesView: AnyObject, CanShowAlert {
-    func showCategories(list: [Category])
-    func showItems(list: [Item], color: UIColor)
-    func setSelectedCategory(selectedNumber: Int)
-    func showBasketBagdeNumber(_ number: Int)
-    func showBasket(isVisible: Bool)
-}
-
-protocol BasketCollectionView: AnyObject, CanShowAlert {
-    func updateCategoryItems(_ items: [CategoryItem])
-}
-
 // TODO: This should be separated into several presenters and the models should be extracted from here
 class CategoriesPresenter {
     private weak var view: CategoriesView?
     weak var basketCollectionView: BasketCollectionView?
     private let service: CategoriesService
+    private let persistenceService: PersistenceService
     
     var selectedPage = 0
     var categories: [Category] = []
@@ -35,10 +20,12 @@ class CategoriesPresenter {
     
     init(
         view: CategoriesView,
-        service: CategoriesService
+        service: CategoriesService,
+        persistenceService: PersistenceService
     ) {
         self.view = view
         self.service = service
+        self.persistenceService = persistenceService
     }
     
     func requestData() {
@@ -49,9 +36,10 @@ class CategoriesPresenter {
             
             self?.categories = categories.sorted { $0.name < $1.name }
             
-            self?.showCategories()
-            self?.showPage()
-            view?.showBasketBagdeNumber(0)
+            self?.persistenceService.loadItems(loaded: { savedItems in
+                self?.itemsInBasket = savedItems
+                self?.showAll()
+            })
         }
     }
     
@@ -91,8 +79,10 @@ class CategoriesPresenter {
     func addItemToBasket(item: Item) {
         let category = categories[selectedPage]
         
-        itemsInBasket.append(.init(item: item, category: category.title))
+        let categoryItem = CategoryItem(item: item, category: category.title)
+        itemsInBasket.append(categoryItem)
         view?.showBasketBagdeNumber(itemsInBasket.count)
+        persistenceService.addItem(categoryItem)
     }
     
     func showBasket(isVisible: Bool) {
@@ -106,11 +96,18 @@ class CategoriesPresenter {
             // TODO: do we need it?
             self.itemsInBasket = []
             self.view?.showBasketBagdeNumber(0)
+            self.persistenceService.clearItems()
         }
     }
     
     
     // MARK: - private funcs
+    
+    private func showAll() {
+        showCategories()
+        showPage()
+        view?.showBasketBagdeNumber(itemsInBasket.count)
+    }
     
     private func showPage() {
         let category = categories[selectedPage]
@@ -126,4 +123,21 @@ class CategoriesPresenter {
         view?.showCategories(list: categories)
         view?.setSelectedCategory(selectedNumber: selectedPage)
     }
+}
+
+// TODO: move it to separated file(s)?
+protocol CanShowAlert {
+    func showAlert(text: String, okCallback: (() -> Void)?)
+}
+
+protocol CategoriesView: AnyObject, CanShowAlert {
+    func showCategories(list: [Category])
+    func showItems(list: [Item], color: UIColor)
+    func setSelectedCategory(selectedNumber: Int)
+    func showBasketBagdeNumber(_ number: Int)
+    func showBasket(isVisible: Bool)
+}
+
+protocol BasketCollectionView: AnyObject, CanShowAlert {
+    func updateCategoryItems(_ items: [CategoryItem])
 }
